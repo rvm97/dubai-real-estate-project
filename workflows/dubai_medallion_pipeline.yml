@@ -1,0 +1,40 @@
+resources:
+  jobs:
+    Daily_Real_Estate_Pipeline:
+      name: Daily_Real_Estate_Pipeline
+      schedule:
+        quartz_cron_expression: 40 0 6 * * ?
+        timezone_id: Europe/Kiev
+        pause_status: PAUSED
+      tasks:
+        - task_key: 1_ingest_transactions
+          notebook_task:
+            notebook_path: /Workspace/Users/rvm97@medanova26.onmicrosoft.com/dubai-real-estate-project/1_ingest_bronze_snapshot
+            source: WORKSPACE
+        - task_key: 2_ingest_dimensions
+          depends_on:
+            - task_key: 1_ingest_transactions
+          notebook_task:
+            notebook_path: /Workspace/Users/rvm97@medanova26.onmicrosoft.com/dubai-real-estate-project/2_ingest_dimensions_units_projects
+            source: WORKSPACE
+        - task_key: 3_transform_silver
+          depends_on:
+            - task_key: 2_ingest_dimensions
+          notebook_task:
+            notebook_path: /Workspace/Users/rvm97@medanova26.onmicrosoft.com/dubai-real-estate-project/3_silver_transformation
+            source: WORKSPACE
+        - task_key: 4_transform_gold
+          depends_on:
+            - task_key: 3_transform_silver
+          notebook_task:
+            notebook_path: /Workspace/Users/rvm97@medanova26.onmicrosoft.com/dubai-real-estate-project/4_gold_transformation
+            source: WORKSPACE
+        - task_key: 5_refresh_bridge
+          depends_on:
+            - task_key: 4_transform_gold
+          notebook_task:
+            notebook_path: /Workspace/Users/rvm97@medanova26.onmicrosoft.com/dubai-real-estate-project/5_powerbi_bridge
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
