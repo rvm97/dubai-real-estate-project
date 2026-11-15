@@ -71,6 +71,7 @@ dubai-real-estate-project/
 │   └── dubai_medallion_pipeline.yml         # Exported Lakeflow Job DAG configuration
 ├── assets/
 │   └── screenshots/                         # Architecture, Lineage, Job DAG & Dashboard visuals
+├── databricks.yml                           # Databricks Asset Bundle (DAB) IaC configuration
 └── README.md
 
 ```
