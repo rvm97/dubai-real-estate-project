@@ -61,7 +61,7 @@ dubai-real-estate-project/
 ├── 1_ingest_bronze_snapshot.ipynb          # Raw transactions ingestion & landing zone management
 ├── 2_ingest_dimensions_units_projects.ipynb # Dimension ingestion (Projects & Units master data)
 ├── 3_silver_transformation.ipynb           # Deduplication, ANSI-safe casting, enrichment & joins
-├── 4_gold_aggregation.ipynb                # Business-level KPI aggregations & BI table registration
+├── 4_gold_transormation.ipynb                # Business-level KPI aggregations & BI table registration
 ├── setup/
 │   └── 00_unity_catalog_governance.sql     # DDL reference for Credentials, External Locations & Volumes
 ├── workflows/
