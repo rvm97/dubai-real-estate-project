@@ -57,22 +57,24 @@ flowchart LR
 ## 📂 Repository Structure
 
 ```text
-dubai-real-estate-project/
+**dubai-real-estate-project/**
+
 ├── 1_ingest_bronze_snapshot.ipynb           # Raw transactions ingestion & landing zone management
 ├── 2_ingest_dimensions_units_projects.ipynb # Dimension ingestion (Projects & Units master data)
 ├── 3_silver_transformation.ipynb            # Deduplication, ANSI-safe casting, enrichment & joins
-├── 4_gold_transformation.ipynb              # Business-level KPI aggregations & Gold Delta marts
-├── 5_powerbi_bridge.ipynb                   # Registers Gold Delta tables in Unity Catalog for BI
+├── 4_gold_transformation.ipynb              # Business-level KPI aggregations written to ADLS Gold Delta paths
+├── 5_powerbi_bridge.ipynb                   # Materializes Gold Delta paths into Unity Catalog Managed Tables for Power BI
 ├── bi/
-│   └── Dubai_Real_Estate_Pulse.pbix         # Interactive Power BI report (Import mode)
+│   └── Dubai_Real_Estate_Pulse.pbix         # Self-contained Power BI report connected via native Databricks connector (Import mode)
 ├── setup/
-│   └── 00_unity_catalog_governance.sql      # DDL reference for Credentials, External Locations & Volumes
+│   └── 00_unity_catalog_governance.sql      # Reference DDL for Storage Credentials, External Locations & Volumes
 ├── workflows/
-│   └── dubai_medallion_pipeline.yml         # Exported Lakeflow Job DAG configuration
+│   └── dubai_medallion_pipeline.yml         # Exported Lakeflow Multi-Task Job DAG configuration
 ├── assets/
-│   └── screenshots/                         # Architecture, Lineage, Job DAG & Dashboard visuals
+│   └── screenshots/                         # External Locations, Job DAG, Lineage Graph & Power BI Dashboard visuals
 ├── databricks.yml                           # Databricks Asset Bundle (DAB) IaC configuration
 └── README.md
+
 
 ```
 ---
