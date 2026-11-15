@@ -48,7 +48,7 @@ flowchart LR
 ## 🚀 Key Engineering Highlights
 
 * **Zero-Secret Cloud Governance (Unity Catalog):** Eliminated hardcoded storage account keys (`spark.conf.set`) by configuring an **Azure Databricks Access Connector** with System-Assigned Managed Identity (`Storage Blob Data Contributor`) mapped to **Unity Catalog External Locations** (`ext_bronze`, `ext_silver`, `ext_gold`).
-* **Serverless-First Architecture:** Designed all ingestion, transformation, and aggregation notebooks to run on stateless **Databricks Serverless Compute**, ensuring instant startup and zero idle cluster costs.
+* **Serverless-First Architecture:** Designed all ingestion, transformation, and aggregation notebooks to run on stateless **Databricks Serverless Compute**, ensuring rapid startup and zero idle cluster costs.
 * **ANSI-Safe Schema & Type Resilience:** Handled dirty string `"null"` literals and malformed date strings in raw DLD CSV files under strict Spark ANSI mode using `try_cast` and `try_to_date` expressions, preventing runtime pipeline failures.
 * **Automated Multi-Task Orchestration:** Chained all four notebooks into a reproducible **Lakeflow Job** DAG with dependency management and automated Delta table registration for downstream BI tools.
 
@@ -88,8 +88,6 @@ dubai-real-estate-project/
 ---
 
 ## 📸 Pipeline Execution & Proof of Work
-
-> *Tip: Upload your screenshots to `assets/screenshots/` in this repository and update the filenames below to render them automatically.*
 
 ### 1. Unity Catalog External Locations & Governance
 ![Unity Catalog External Locations](assets/screenshots/unity_catalog_locations.png)
