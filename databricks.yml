@@ -1,0 +1,18 @@
+bundle:
+  name: dubai-real-estate-lakehouse
+
+include:
+  - workflows/*.yml
+
+variables:
+  storage_account_name:
+    description: Azure Data Lake Gen2 storage account name
+    default: adlsdubairvm97
+
+targets:
+  dev:
+    mode: development
+    default: true
+
+  prod:
+    mode: production
